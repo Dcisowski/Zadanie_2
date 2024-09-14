@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Product routes
+GET        /products                controllers.ProductController.getAllProducts
+GET        /products/:id            controllers.ProductController.fetchProductById(id: Long)
+POST       /products                controllers.ProductController.addNewProduct
+PUT        /products/:id            controllers.ProductController.modifyProduct(id: Long)
+DELETE     /products/:id            controllers.ProductController.removeProduct(id: Long)
+GET      /products/category/:category  controllers.ProductController.fetchProductsByCategory(category: String)
+POST     /categories/:category          controllers.ProductController.createCategory(category: String)
+GET      /categories                controllers.ProductController.getAllCategories
+POST    /cart/add                controllers.ProductController.addItemToCart
+DELETE    /cart/remove             controllers.ProductController.removeItemFromCart
+GET     /cart                    controllers.ProductController.displayCartContents
